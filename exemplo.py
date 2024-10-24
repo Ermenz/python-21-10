@@ -3,12 +3,6 @@ from PIL import Image, ImageTk  # Pillow para trabalhar com imagens
 
 cor1 = "#6495ED"  # azul
 
-
-
-
-
-
-
 # Função para exibir GIF animado
 def atualizar_gif(ind):
     frame = frames[ind]
@@ -16,10 +10,8 @@ def atualizar_gif(ind):
     ind += 1
     if ind == frame_count:  # Reinicia o GIF quando chegar ao último frame
         ind = 0
-    janela.after(100, atualizar_gif, ind)  # Atualiza a cada 100ms (ajuste conforme a velocidade desejada)
-l_logo.place(x=250, y=250)
-
-
+    janela.after(100, atualizar_gif, ind)  # Atualiza a cada 100ms
+    l_logo.place(x=250, y=250)  # Atualiza a posição do Label
 
 # Criar a janela principal
 janela = Tk()
@@ -45,21 +37,14 @@ for i in range(frame_count):
     frames.append(frame)
 
 # Criar um Label para exibir o GIF
-
 l_logo = Label(janela)
+l_logo.place(x=250, y=250)  # Adiciona o Label à janela
+
 # Iniciar a animação do GIF
 janela.after(0, atualizar_gif, 0)
 
-
-
 botao = Button(janela, text="Exibir Gif", command=lambda: atualizar_gif(0))
 botao.grid(column=0, row=0)
-
-
-
-
-
-
 
 # Loop principal da janela
 janela.mainloop()
